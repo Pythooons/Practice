@@ -1,0 +1,18 @@
+import random
+import timeit
+import heapq
+
+# Generate a large dataset
+data = [random.randint(1, 10000) for _ in range(100000)]
+
+# Timing QuickSort
+quick_sort_time = timeit.timeit(lambda: sorted(data), number=1)
+print(f"QuickSort Time: {quick_sort_time} seconds")
+
+# Timing MergeSort
+merge_sort_time = timeit.timeit(lambda: sorted(data, key=lambda x: x), number=1)
+print(f"MergeSort Time: {merge_sort_time} seconds")
+
+# Timing HeapSort
+heap_sort_time = timeit.timeit(lambda: list(heapq.nlargest(len(data), data)), number=1)
+print(f"HeapSort Time: {heap_sort_time} seconds")
